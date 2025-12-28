@@ -71,11 +71,15 @@ const Auth = () => {
                 <Link to="/forgot-password" title="Forgot Password?">Forgot Password?</Link>
               </div>
 
-              <button type="submit" className={`btn solid ${isLoading ? 'loading' : ''}`} disabled={isLoading}>
-                {isLoading ? 'Signing In...' : 'Sign In'}
-              </button>
+                <button type="submit" className={`btn solid ${isLoading ? 'loading' : ''}`} disabled={isLoading}>
+                  {isLoading ? 'Signing In...' : 'Sign In'}
+                </button>
 
-              <div className="social-text">Or sign in with social platforms</div>
+                <p className="toggle-text">
+                  New here? <button type="button" onClick={toggleMode}>Sign Up</button>
+                </p>
+
+                <div className="social-text">Or sign in with social platforms</div>
               <div className="social-media">
                 <button type="button" className="social-icon">
                   <svg viewBox="0 0 24 24" width="20" height="20">
@@ -118,11 +122,15 @@ const Auth = () => {
                 <input type={showPassword ? 'text' : 'password'} placeholder="Confirm Password" required />
               </div>
 
-              <button type="submit" className={`btn solid ${isLoading ? 'loading' : ''}`} disabled={isLoading}>
-                {isLoading ? 'Creating...' : 'Sign Up'}
-              </button>
+                <button type="submit" className={`btn solid ${isLoading ? 'loading' : ''}`} disabled={isLoading}>
+                  {isLoading ? 'Creating...' : 'Sign Up'}
+                </button>
 
-              <div className="social-text">Or sign up with social platforms</div>
+                <p className="toggle-text">
+                  Already have an account? <button type="button" onClick={toggleMode}>Sign In</button>
+                </p>
+
+                <div className="social-text">Or sign up with social platforms</div>
               <div className="social-media">
                 <button type="button" className="social-icon">
                   <svg viewBox="0 0 24 24" width="20" height="20">
@@ -157,11 +165,10 @@ const Auth = () => {
                 </svg>
                 <span>Cat Health</span>
               </div>
-              <h3>New here?</h3>
-              <p>Join our community and start monitoring your cat's health with AI technology today.</p>
-              <button className="btn transparent" onClick={toggleMode}>Sign Up</button>
+                <h3>New here?</h3>
+                <p>Join our community and start monitoring your cat's health with AI technology today.</p>
+              </div>
             </div>
-          </div>
           <div className="panel right-panel">
             <div className="content">
               <div className="auth-logo-white">
@@ -176,11 +183,10 @@ const Auth = () => {
                 </svg>
                 <span>Cat Health</span>
               </div>
-              <h3>One of us?</h3>
-              <p>Already have an account? Sign in to see your cat's health progress and latest scans.</p>
-              <button className="btn transparent" onClick={toggleMode}>Sign In</button>
+                <h3>One of us?</h3>
+                <p>Already have an account? Sign in to see your cat's health progress and latest scans.</p>
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
