@@ -1,18 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import './Navbar.css';
 
-const Navbar = ({ isLoggedIn = false }) => {
+const Navbar = () => {
+  // Initialize state from localStorage
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-    const navLinks = [
-      { name: 'Beranda', href: '#beranda' },
-      { name: 'Fitur', href: '#fitur' },
-      { name: 'Cara Kerja', href: '#how-it-works' },
-      { name: 'FAQ', href: '#faq' },
-    ];
+  // Update state whenever component mounts or storage changes
+  useEffect(() => {
+    const checkLoginStatus = () => {
+        setIsLoggedIn(!!localStorage.getItem('token'));
+    };
+
+    checkLoginStatus();
+
+    window.addEventListener('storage', checkLoginStatus);
+    return () => {
+      window.removeEventListener('storage', checkLoginStatus);
+    };
+  }, []);
+
+  const navLinks = [
+    { name: 'Beranda', href: '#beranda' },
+    { name: 'Fitur', href: '#fitur' },
+    { name: 'Cara Kerja', href: '#how-it-works' },
+    { name: 'FAQ', href: '#faq' },
+  ];
 
   return (
     <nav className="navbar">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
+import { authAPI } from '../services/api';
 import './Auth.css';
 
 const Auth = () => {
@@ -9,11 +10,35 @@ const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(location.pathname === '/register');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  // Form State
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: ''
+  });
 
   // Sync state with URL
   useEffect(() => {
     setIsSignUp(location.pathname === '/register');
+    setError('');
+    // Reset form when switching modes
+    setFormData({
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: ''
+    });
   }, [location.pathname]);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const toggleMode = () => {
     const newPath = isSignUp ? '/login' : '/register';
@@ -23,17 +48,53 @@ const Auth = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsLoading(false);
-    navigate('/dashboard');
+    setError('');
+
+    try {
+      const { email, password } = formData;
+      const response = await authAPI.login({ email, password });
+      
+      const { token, user } = response.data;
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      
+      // Dispatch a storage event or custom event to update Navbar if needed
+      window.dispatchEvent(new Event('storage'));
+      
+      navigate('/dashboard');
+    } catch (err) {
+      console.error('Login error:', err);
+      setError(err.response?.data?.message || 'Failed to login. Please check your credentials.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsLoading(false);
-    navigate('/dashboard');
+    setError('');
+
+    try {
+      if (formData.password !== formData.password_confirmation) {
+         throw new Error('Passwords do not match');
+      }
+
+      const response = await authAPI.register(formData);
+      
+      const { token, user } = response.data;
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      
+      window.dispatchEvent(new Event('storage'));
+
+      navigate('/dashboard');
+    } catch (err) {
+       console.error('Register error:', err);
+       setError(err.response?.data?.message || err.message || 'Failed to register.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -46,14 +107,30 @@ const Auth = () => {
               <h2 className="title">Sign In</h2>
               <p className="subtitle">Enter your credentials to access your account</p>
               
+              {error && !isSignUp && <div className="error-message" style={{color: '#ff4444', marginBottom: '1rem', fontSize: '0.9rem', textAlign: 'center'}}>{error}</div>}
+
               <div className="input-field">
                 <Mail size={20} />
-                <input type="email" placeholder="Email Address" required />
+                <input 
+                  type="email" 
+                  name="email"
+                  placeholder="Email Address" 
+                  value={formData.email}
+                  onChange={handleChange}
+                  required 
+                />
               </div>
               
               <div className="input-field">
                 <Lock size={20} />
-                <input type={showPassword ? 'text' : 'password'} placeholder="Password" required />
+                <input 
+                  type={showPassword ? 'text' : 'password'} 
+                  name="password"
+                  placeholder="Password" 
+                  value={formData.password}
+                  onChange={handleChange}
+                  required 
+                />
                 <button 
                   type="button" 
                   className="password-toggle"
@@ -102,24 +179,54 @@ const Auth = () => {
               <h2 className="title">Create Account</h2>
               <p className="subtitle">Fill in your details to get started</p>
               
+              {error && isSignUp && <div className="error-message" style={{color: '#ff4444', marginBottom: '1rem', fontSize: '0.9rem', textAlign: 'center'}}>{error}</div>}
+
               <div className="input-field">
                 <User size={20} />
-                <input type="text" placeholder="Full Name" required />
+                <input 
+                  type="text" 
+                  name="name"
+                  placeholder="Full Name" 
+                  value={formData.name}
+                  onChange={handleChange}
+                  required 
+                />
               </div>
               
               <div className="input-field">
                 <Mail size={20} />
-                <input type="email" placeholder="Email Address" required />
+                <input 
+                  type="email" 
+                  name="email"
+                  placeholder="Email Address" 
+                  value={formData.email}
+                  onChange={handleChange}
+                  required 
+                />
               </div>
               
               <div className="input-field">
                 <Lock size={20} />
-                <input type={showPassword ? 'text' : 'password'} placeholder="Password" required />
+                <input 
+                  type={showPassword ? 'text' : 'password'} 
+                  name="password"
+                  placeholder="Password" 
+                  value={formData.password}
+                  onChange={handleChange}
+                  required 
+                />
               </div>
 
               <div className="input-field">
                 <Lock size={20} />
-                <input type={showPassword ? 'text' : 'password'} placeholder="Confirm Password" required />
+                <input 
+                  type={showPassword ? 'text' : 'password'} 
+                  name="password_confirmation"
+                  placeholder="Confirm Password" 
+                  value={formData.password_confirmation}
+                  onChange={handleChange}
+                  required 
+                />
               </div>
 
                 <button type="submit" className={`btn solid ${isLoading ? 'loading' : ''}`} disabled={isLoading}>

@@ -1,4 +1,4 @@
-import { Bell, Search, User } from 'lucide-react';
+import { Bell, User } from 'lucide-react';
 import './DashboardHeader.css';
 
 const DashboardHeader = ({ title, subtitle }) => {
@@ -9,10 +9,6 @@ const DashboardHeader = ({ title, subtitle }) => {
         {subtitle && <p className="header-subtitle">{subtitle}</p>}
       </div>
       <div className="header-right">
-        <div className="header-search">
-          <Search size={18} />
-          <input type="text" placeholder="Search..." />
-        </div>
         <button className="header-notification">
           <Bell size={20} />
           <span className="notification-badge">3</span>
