@@ -51,7 +51,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-6);
-  align-items: start;
+  align-items: stretch;
 }
 
 .pricing-card {
@@ -62,6 +62,8 @@
   position: relative;
   transition: all var(--transition-normal);
   border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
 }
 
 .pricing-card:hover {
@@ -71,12 +73,11 @@
 
 .pricing-card.popular {
   border-color: var(--primary-500);
-  transform: scale(1.05);
   z-index: 1;
 }
 
 .pricing-card.popular:hover {
-  transform: scale(1.05) translateY(-8px);
+  transform: translateY(-8px);
 }
 
 .popular-badge {
@@ -132,6 +133,7 @@
   flex-direction: column;
   gap: var(--spacing-3);
   margin-bottom: var(--spacing-6);
+  flex-grow: 1;
 }
 
 .pricing-features li {
