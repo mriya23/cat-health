@@ -25,7 +25,7 @@ const HowItWorksSection = () => {
       number: 4,
       icon: <Stethoscope size={28} />,
       title: '4. Opsi Konsultasi Dokter Hewan',
-      description: 'Konsultasi dengan dokter hewan untuk penangnan lanjutan Ina.'
+        description: 'Konsultasi dengan dokter hewan untuk penanganan lebih lanjut.'
     }
   ];
 
