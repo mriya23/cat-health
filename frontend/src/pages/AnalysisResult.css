@@ -1,0 +1,238 @@
+.result-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-6);
+}
+
+.result-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.result-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Image Card */
+.image-card {
+  display: flex;
+  gap: var(--spacing-6);
+}
+
+.result-image-container {
+  flex-shrink: 0;
+}
+
+.result-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.result-image-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.result-image-info h3 {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-2);
+}
+
+.result-date {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* Findings Card */
+.findings-card h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-4);
+}
+
+.findings-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.finding-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: var(--neutral-50);
+  border-radius: var(--radius-lg);
+}
+
+.finding-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finding-item.good .finding-icon {
+  background: #d4edda;
+  color: var(--success);
+}
+
+.finding-item.attention .finding-icon {
+  background: #fff3cd;
+  color: var(--warning);
+}
+
+.finding-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.finding-name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.finding-desc {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.finding-status {
+  flex-shrink: 0;
+}
+
+/* Sidebar */
+.result-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+/* Status Card */
+.status-card {
+  text-align: center;
+}
+
+.status-header h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-4);
+}
+
+.status-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+}
+
+.status-indicator.healthy {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: var(--success);
+}
+
+.status-text {
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.confidence-text {
+  font-size: var(--text-sm);
+  opacity: 0.8;
+}
+
+/* Explanation Card */
+.explanation-card {
+  background: var(--primary-50);
+  border: 1px solid var(--primary-200);
+}
+
+.explanation-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-3);
+  color: var(--primary-500);
+}
+
+.explanation-header h4 {
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.explanation-card p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Recommendations Card */
+.recommendations-card h4 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin-bottom: var(--spacing-4);
+}
+
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.recommendations-list li {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  padding-left: var(--spacing-4);
+  position: relative;
+}
+
+.recommendations-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary-500);
+}
+
+/* Actions */
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.result-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .result-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

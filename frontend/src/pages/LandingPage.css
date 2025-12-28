@@ -1,0 +1,10 @@
+.landing-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-page main {
+  flex: 1;
+  padding-top: 72px; /* Navbar height */
+}

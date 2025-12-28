@@ -1,0 +1,265 @@
+.billing-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-6);
+}
+
+.billing-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.billing-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.billing-card h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-4);
+}
+
+/* Plan Overview */
+.plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-4);
+}
+
+.plan-badge {
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.plan-badge.active {
+  background: #d4edda;
+  color: #155724;
+}
+
+.plan-details {
+  padding: var(--spacing-4);
+  background: var(--neutral-50);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-4);
+}
+
+.plan-name-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-3);
+}
+
+.plan-name-price h4 {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--primary-600);
+}
+
+.plan-price {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.plan-price small {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.plan-renew {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.change-plan-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Payment Method */
+.payment-method {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background: var(--neutral-50);
+  border-radius: var(--radius-lg);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--primary-100);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-500);
+}
+
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-type {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.card-expiry {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* Invoices */
+.invoices-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.invoice-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-3);
+  background: var(--neutral-50);
+  border-radius: var(--radius-lg);
+}
+
+.invoice-date {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.invoice-amount {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.invoice-status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.invoice-status.paid {
+  background: #d4edda;
+  color: #155724;
+}
+
+/* Sidebar - Plans Compare */
+.plans-compare h3 {
+  margin-bottom: var(--spacing-4);
+}
+
+.plans-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.plan-item {
+  padding: var(--spacing-4);
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+}
+
+.plan-item:hover {
+  border-color: var(--primary-300);
+}
+
+.plan-item.current {
+  border-color: var(--primary-500);
+  background: var(--primary-50);
+}
+
+.plan-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-2);
+}
+
+.plan-item-name {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.current-badge {
+  background: var(--primary-500);
+  color: white;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.plan-item-price {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-3);
+}
+
+.plan-item-price small {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.plan-item-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-3);
+}
+
+.plan-item-features li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.plan-item-features li svg {
+  color: var(--primary-500);
+}
+
+.w-full {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .billing-container {
+    grid-template-columns: 1fr;
+  }
+}

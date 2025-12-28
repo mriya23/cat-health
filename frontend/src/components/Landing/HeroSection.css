@@ -1,0 +1,307 @@
+.hero-section {
+  background: linear-gradient(135deg, #e6f7f5 0%, #f0faf9 50%, #ffffff 100%);
+  padding: var(--spacing-20) 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-6);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-16);
+  align-items: center;
+}
+
+.hero-content {
+  max-width: 550px;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #1e293b;
+  margin-bottom: var(--spacing-6);
+  letter-spacing: -0.02em;
+}
+
+.text-highlight {
+  color: #14b8a6; /* Teal/Cyan color matching "Penyakit Kucing" */
+}
+
+.hero-description {
+  font-size: var(--text-lg);
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-10);
+  max-width: 480px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5eead4; /* Soft bright teal */
+  color: #0f766e;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 50px; /* Pill shape */
+  font-size: var(--text-base);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(94, 234, 212, 0.3);
+}
+
+.btn-hero-primary:hover {
+  background-color: #2dd4bf;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(94, 234, 212, 0.4);
+}
+
+.btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e2e8f0; /* Light grey/blue */
+  color: #475569;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 50px; /* Pill shape */
+  font-size: var(--text-base);
+  transition: all 0.2s ease;
+}
+
+.btn-hero-secondary:hover {
+  background-color: #cbd5e1;
+  color: #1e293b;
+}
+
+/* MacBook Mockup Styles */
+.hero-image {
+  display: flex;
+  justify-content: center;
+  perspective: 2000px;
+}
+
+.macbook {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  transform-style: preserve-3d;
+  /* subtle rotation for 3D feel */
+  transform: rotateY(-5deg) rotateX(2deg);
+  transition: transform 0.5s ease;
+}
+
+.macbook:hover {
+  transform: rotateY(0deg) rotateX(0deg);
+}
+
+.macbook-screen {
+  background: #0f172a; /* Frame color black/dark grey */
+  border-radius: 20px 20px 0 0;
+  padding: 2% 2% 0 2%; /* Bezel thickness */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  position: relative;
+  aspect-ratio: 16/10;
+}
+
+.macbook-camera {
+  width: 6px;
+  height: 6px;
+  background: #334155;
+  border-radius: 50%;
+  position: absolute;
+  top: 8px; /* Inside top bezel */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.macbook-display {
+  background: #f8fafc; /* Screen content bg */
+  border-radius: 8px 8px 0 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #cbd5e1;
+  border-bottom: none;
+}
+
+.macbook-base {
+  background: #e2e8f0; /* Base silver color */
+  height: 24px;
+  width: 120%; /* Wider than screen */
+  margin-left: -10%; /* Center relative to screen width 100% */
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  margin-top: -1px; /* Overlap slightly */
+}
+
+/* Notch / Opening Indent on Base */
+.macbook-base::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15%;
+  height: 8px;
+  background: #cbd5e1; /* Darker silver indent */
+  border-radius: 0 0 8px 8px;
+}
+
+/* Simulated App Interface CSS */
+.app-interface {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px;
+  background: #f1f5f9;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.app-logo-small {
+  width: 30px;
+  height: 30px;
+  background: #14b8a6;
+  border-radius: 50%;
+}
+
+.app-search-bar {
+  width: 60%;
+  height: 30px;
+  background: white;
+  border-radius: 4px;
+}
+
+.app-body {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-main-card {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  align-items: center;
+}
+
+.app-upload-zone {
+  flex: 1;
+  height: 140px;
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.upload-icon {
+  width: 32px;
+  height: 32px;
+  background: #e2e8f0;
+  border-radius: 50%;
+}
+
+.upload-text-lines span {
+  display: block;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.upload-text-lines span:first-child { width: 80px; }
+.upload-text-lines span:last-child { width: 50px; }
+
+.upload-btn-fake {
+  width: 100px;
+  height: 24px;
+  background: #14b8a6;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.app-result-preview {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preview-cat-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.preview-status-badge {
+  background: #dcfce7;
+  color: #166534;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--spacing-12);
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-image {
+    perspective: none;
+    padding: 0 5%;
+  }
+
+  .macbook {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    padding: 0 var(--spacing-4);
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+
