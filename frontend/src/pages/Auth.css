@@ -30,7 +30,7 @@
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  left: 75%;
+  left: 72%;
   width: 50%;
   display: grid;
   grid-template-columns: 1fr;
@@ -47,7 +47,7 @@ form {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   width: 100%;
-  max-width: 480px;
+  max-width: 550px;
   margin: 0 auto;
   transition: opacity 1.2s cubic-bezier(0.7, 0, 0.3, 1);
 }
@@ -63,14 +63,14 @@ form.sign-in-form {
 }
 
 .title {
-  font-size: 1.7rem;
+  font-size: 2.2rem;
   color: #1aa393;
   margin-bottom: 8px;
   font-weight: 700;
 }
 
 .subtitle {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #666;
   margin-bottom: 24px;
   text-align: center;
@@ -78,11 +78,11 @@ form.sign-in-form {
 }
 
 .input-field {
-  max-width: 380px;
+  max-width: 440px;
   width: 100%;
   background-color: #f0f0f0;
-  margin: 6px 0;
-  height: 50px;
+  margin: 8px 0;
+  height: 55px;
   border-radius: 55px;
   display: grid;
   grid-template-columns: 15% 70% 15%;
@@ -135,12 +135,12 @@ form.sign-in-form {
 
 .form-options {
   width: 100%;
-  max-width: 380px;
+  max-width: 440px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 10px 0 20px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 .checkbox-wrapper {
@@ -162,11 +162,11 @@ form.sign-in-form {
 }
 
 .btn {
-  width: 150px;
+  width: 180px;
   background-color: #1aa393;
   border: none;
   outline: none;
-  height: 46px;
+  height: 52px;
   border-radius: 49px;
   color: #fff;
   text-transform: uppercase;
@@ -177,6 +177,7 @@ form.sign-in-form {
   align-items: center;
   justify-content: center;
   position: relative;
+  font-size: 1rem;
 }
 
 .btn:hover {
@@ -191,7 +192,7 @@ form.sign-in-form {
 
 .toggle-text {
   margin: 10px 0;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #666;
 }
 
@@ -203,7 +204,7 @@ form.sign-in-form {
   cursor: pointer;
   padding: 0;
   margin-left: 5px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 .toggle-text button:hover {
@@ -212,7 +213,7 @@ form.sign-in-form {
 
 .social-text {
   padding: 0.5rem 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #444;
 }
 
@@ -223,12 +224,12 @@ form.sign-in-form {
 }
 
 .social-icon {
-  height: 40px;
-  width: 40px;
+  height: 45px;
+  width: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 0.45rem;
+  margin: 0 0.5rem;
   color: #333;
   border-radius: 50%;
   border: 1px solid #eee;
@@ -257,7 +258,7 @@ form.sign-in-form {
   height: 2000px;
   width: 2000px;
   top: -10%;
-  right: 48%;
+  right: 46%;
   transform: translateY(-50%);
   background-image: linear-gradient(-45deg, #1aa393 0%, #158b7d 100%);
   border-radius: 50%;
@@ -296,40 +297,40 @@ form.sign-in-form {
 .panel h3 {
   font-weight: 600;
   line-height: 1;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 15px;
 }
 
 .panel p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   padding: 0.7rem 0;
   opacity: 0.9;
-  max-width: 300px;
+  max-width: 350px;
 }
 
 .auth-logo-white {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 2rem;
 }
 
 .auth-logo-white svg {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
 }
 
 .auth-logo-white span {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: white;
 }
 
-/* SIGN UP MODE (INSTANT) */
+/* SIGN UP MODE */
 
 .auth-card.sign-up-mode::before {
   transform: translate(100%, -50%);
-  right: 52%;
+  right: 54%;
 }
 
 .auth-card.sign-up-mode .left-panel {
@@ -341,7 +342,7 @@ form.sign-in-form {
 }
 
 .auth-card.sign-up-mode .signin-signup {
-  left: 25%;
+  left: 28%;
 }
 
 .auth-card.sign-up-mode form.sign-up-form {
@@ -415,7 +416,7 @@ form.sign-in-form {
   }
 
   .panel h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   .panel p {
@@ -456,13 +457,29 @@ form.sign-in-form {
   .right-panel .content {
     transform: translateY(300px);
   }
+
+  /* Adjust sizes back down slightly for mobile */
+  form {
+    max-width: 100%;
+    padding: 0 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .input-field {
+    max-width: 380px;
+    height: 50px;
+  }
+  
+  .btn {
+    width: 150px;
+    height: 46px;
+  }
 }
 
 @media (max-width: 570px) {
-  form {
-    padding: 0 1.5rem;
-  }
-
   .auth-card::before {
     bottom: 72%;
     left: 50%;
