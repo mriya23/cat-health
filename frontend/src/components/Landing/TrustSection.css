@@ -1,5 +1,5 @@
 .trust-section {
-  background: transparent;
+  background: #f0f7ff;
   padding: var(--spacing-16) 0;
 }
 
@@ -110,5 +110,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-

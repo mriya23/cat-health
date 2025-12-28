@@ -1,5 +1,5 @@
 .features-section {
-  background: transparent; /* Clean transparent background to show page gradient */
+  background: white; /* Clean white background for section */
   padding: var(--spacing-20) 0;
 }
 
@@ -111,5 +111,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-

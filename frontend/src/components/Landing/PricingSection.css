@@ -1,5 +1,5 @@
 .pricing-section {
-  background: transparent;
+  background: linear-gradient(180deg, var(--bg-tertiary) 0%, white 100%);
   padding: var(--spacing-20) 0;
 }
 
