@@ -6,16 +6,15 @@ import AnalysisResult from './pages/AnalysisResult';
 import ScanHistory from './pages/ScanHistory';
 import Billing from './pages/Billing';
 import AdminDashboard from './pages/AdminDashboard';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Auth from './pages/Auth';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Auth />} />
+        <Route path="/register" element={<Auth />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/upload" element={<UploadScan />} />
         <Route path="/result/:id" element={<AnalysisResult />} />
