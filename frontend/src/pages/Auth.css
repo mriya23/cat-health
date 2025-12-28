@@ -35,7 +35,7 @@
   display: grid;
   grid-template-columns: 1fr;
   z-index: 5;
-  transition: all 1.5s cubic-bezier(0.7, 0, 0.3, 1);
+  transition: all 1.8s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
 form {
@@ -43,11 +43,11 @@ form {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 2.5rem 5rem;
+  padding: 0 5rem;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
   margin: 0 auto;
   transition: opacity 1.2s cubic-bezier(0.7, 0, 0.3, 1);
 }
@@ -285,12 +285,12 @@ form.sign-in-form {
 
 .left-panel {
   pointer-events: all;
-  padding: 3rem 17% 2rem 12%;
+  padding: 3rem 12% 2rem 10%;
 }
 
 .right-panel {
   pointer-events: none;
-  padding: 3rem 12% 2rem 17%;
+  padding: 3rem 10% 2rem 12%;
 }
 
 .panel h3 {
@@ -372,72 +372,46 @@ form.sign-in-form {
 
 @media (max-width: 870px) {
   .auth-card {
-    min-height: 100vh;
+    min-height: 800px;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
   }
 
-  .forms-container {
-    height: 100%;
-    position: relative;
-    order: 2;
+  .signin-signup {
+    width: 100%;
+    top: 95%;
+    transform: translate(-50%, -100%);
+    left: 50%;
   }
-
-    .signin-signup {
-      width: 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      transition: all 1.8s cubic-bezier(0.7, 0, 0.3, 1);
-    }
 
   .auth-card.sign-up-mode .signin-signup {
+    top: 5%;
+    transform: translate(-50%, 0);
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  form {
-    padding: 1rem 2rem;
-    height: auto;
-  }
-
-  .title {
-    font-size: 1.8rem;
-    margin-bottom: 5px;
-  }
-
-  .subtitle {
-    margin-bottom: 15px;
   }
 
   .panels-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    height: 100%;
-    position: absolute;
-    pointer-events: none;
+    grid-template-rows: 1fr 2fr 1fr;
   }
 
   .panel {
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     padding: 2.5rem 8%;
     grid-column: 1 / 2;
-    z-index: 7;
-    pointer-events: none;
+  }
+
+  .right-panel {
+    grid-row: 3 / 4;
   }
 
   .left-panel {
     grid-row: 1 / 2;
-    align-items: flex-start;
   }
 
-  .right-panel {
-    grid-row: 2 / 3;
-    align-items: flex-end;
+  .auth-logo-white {
+    margin-bottom: 0;
   }
 
   .panel h3 {
@@ -448,20 +422,22 @@ form.sign-in-form {
     display: none;
   }
 
-  .auth-logo-white {
-    margin-bottom: 0.5rem;
+  .btn.transparent {
+    width: 110px;
+    height: 35px;
+    font-size: 0.7rem;
   }
 
-    .auth-card::before {
-      width: 1500px;
-      height: 1500px;
-      transform: translateX(-50%);
-      left: 30%;
-      bottom: 68%;
-      right: initial;
-      top: initial;
-      transition: all 2.2s cubic-bezier(0.7, 0, 0.3, 1);
-    }
+  .auth-card::before {
+    width: 1500px;
+    height: 1500px;
+    transform: translateX(-50%);
+    left: 30%;
+    bottom: 68%;
+    right: initial;
+    top: initial;
+    transition: 2s ease-in-out;
+  }
 
   .auth-card.sign-up-mode::before {
     transform: translate(-50%, 100%);
@@ -483,19 +459,17 @@ form.sign-in-form {
 }
 
 @media (max-width: 570px) {
-  .signin-signup {
-    top: 50%;
-  }
-  
-  .title {
-    font-size: 1.6rem;
+  form {
+    padding: 0 1.5rem;
   }
 
-  .input-field {
-    height: 50px;
+  .auth-card::before {
+    bottom: 72%;
+    left: 50%;
   }
 
-  .btn {
-    height: 45px;
+  .auth-card.sign-up-mode::before {
+    bottom: 28%;
+    left: 50%;
   }
 }
