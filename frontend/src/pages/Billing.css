@@ -4,12 +4,6 @@
   gap: var(--spacing-6);
 }
 
-.error-banner,
-.success-banner {
-  grid-column: 1 / -1;
-  width: 100%;
-}
-
 .billing-main {
   display: flex;
   flex-direction: column;

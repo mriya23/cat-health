@@ -3,7 +3,7 @@
    ========================================= */
 
 .settings-simple-wrapper {
-  max-width: 700px; /* Sedikit diperkecil agar lebih fokus di tengah */
+  max-width: 700px;
   margin: 0 auto;
   padding-bottom: 4rem;
 }
@@ -45,7 +45,7 @@
 
 .section-title {
   margin-bottom: 1.5rem;
-  text-align: center; /* Center the headings */
+  text-align: center;
 }
 
 .section-title h2 {
@@ -67,19 +67,19 @@
   border: 1px solid var(--neutral-200);
   border-radius: 16px;
   padding: 2.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); /* Softer shadow */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .security-box {
-  border-left: none; /* Removed side border for cleaner center look */
-  border-top: 4px solid var(--primary-500); /* Top border accent instead */
+  border-left: none;
+  border-top: 4px solid var(--primary-500);
 }
 
 
 /* --- AVATAR --- */
 .avatar-row {
   display: flex;
-  flex-direction: column; /* Stack vertically for center alignment */
+  flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 1.5rem;
@@ -162,7 +162,7 @@
 /* --- FORMS --- */
 .form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr; /* Changed to 1 column to make inputs longer */
   gap: 1.5rem;
 }
 
@@ -170,7 +170,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* Remove margin for last child to keep spacing clean */
 .form-grid .form-group {
   margin-bottom: 0;
 }
@@ -185,6 +184,7 @@
 
 .input-modern {
   width: 100%;
+  max-width: 100%; /* Ensure it fills the space */
   padding: 0.85rem 1rem;
   border: 1px solid var(--neutral-300);
   border-radius: 10px;
@@ -204,7 +204,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin: 0 auto 2rem auto; /* Center the pill */
+  margin: 0 auto 2rem auto;
   font-size: 0.85rem;
   color: var(--text-muted);
   background: var(--neutral-50);
@@ -224,7 +224,7 @@
 .form-actions-sticky {
   margin-top: 3rem;
   display: flex;
-  justify-content: center; /* CENTER BUTTON */
+  justify-content: center;
 }
 
 .btn-primary-solid {

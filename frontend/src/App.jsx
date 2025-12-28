@@ -7,8 +7,8 @@ import AnalysisResult from './pages/AnalysisResult';
 import ScanHistory from './pages/ScanHistory';
 import Billing from './pages/Billing';
 import AdminDashboard from './pages/AdminDashboard';
-import Auth from './pages/Auth';
 import Settings from './pages/Settings';
+import Auth from './pages/Auth';
 
 function App() {
   return (
@@ -22,9 +22,10 @@ function App() {
           <Route path="/upload" element={<UploadScan />} />
           <Route path="/result/:id" element={<AnalysisResult />} />
           <Route path="/history" element={<ScanHistory />} />
-          <Route path="/billing" element={<Billing />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/settings" element={<Settings />} />
+            <Route path="/billing" element={<Billing />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+
         </Routes>
       </Router>
     </AuthProvider>

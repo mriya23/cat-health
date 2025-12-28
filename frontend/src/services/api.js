@@ -9,8 +9,6 @@ const api = axios.create({
     'Accept': 'application/json',
   },
   withCredentials: true,
-  xsrfCookieName: 'XSRF-TOKEN',
-  xsrfHeaderName: 'X-XSRF-TOKEN',
 });
 
 // Add token to requests
@@ -42,16 +40,10 @@ api.interceptors.response.use(
 
 // Auth API
 export const authAPI = {
-  getCsrfCookie: () => axios.get('http://localhost:8000/sanctum/csrf-cookie', { withCredentials: true }), // CSRF endpoint is at root, not /api/
   register: (data) => api.post('/register', data),
   login: (data) => api.post('/login', data),
   logout: () => api.post('/logout'),
   getUser: () => api.get('/user'),
-  updateProfile: (data) => api.post('/user/update-profile', data, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  }),
-  updatePassword: (data) => api.post('/user/update-password', data),
-  updateNotificationPreferences: (data) => api.post('/user/update-notification-preferences', data),
 };
 
 // Scans API
@@ -79,13 +71,6 @@ export const notificationsAPI = {
   markAsRead: (id) => api.patch(`/notifications/${id}/mark-read`),
   markAllAsRead: () => api.post('/notifications/mark-all-read'),
   delete: (id) => api.delete(`/notifications/${id}`),
-};
-
-// Admin API
-export const adminAPI = {
-  getStats: () => api.get('/admin/statistics'),
-  getUsers: () => api.get('/admin/users'),
-  getAnalytics: () => api.get('/admin/analytics'),
 };
 
 export default api;
