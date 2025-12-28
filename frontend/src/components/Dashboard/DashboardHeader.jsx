@@ -137,12 +137,14 @@ const DashboardHeader = ({ title, subtitle }) => {
               <User size={20} />
             )}
           </div>
-          <div className="user-info">
-            <span className="user-name">{user?.name || 'User'}</span>
-            <span className="user-role">
-              {user?.plan === 'pro' ? 'Pro Plan' : 'Free Plan'}
-            </span>
-          </div>
+            <div className="user-info">
+              <span className="user-name">{user?.name || 'User'}</span>
+              <span className="user-role">
+                {user?.plan === 'pro' ? 'Pro Plan' : 
+                 user?.plan === 'clinic' ? 'Clinic Plan' : 
+                 'Free Plan'}
+              </span>
+            </div>
         </div>
       </div>
     </header>

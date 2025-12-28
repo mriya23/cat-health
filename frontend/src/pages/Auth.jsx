@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import { authAPI } from '../services/api';
 import './Auth.css';
 
 const Auth = () => {
+  const { login, register } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(location.pathname === '/register');
@@ -52,15 +54,7 @@ const Auth = () => {
 
     try {
       const { email, password } = formData;
-      const response = await authAPI.login({ email, password });
-      
-      const { token, user } = response.data;
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      
-      // Dispatch a storage event or custom event to update Navbar if needed
-      window.dispatchEvent(new Event('storage'));
-      
+      await login(email, password);
       navigate('/dashboard');
     } catch (err) {
       console.error('Login error:', err);
@@ -80,14 +74,8 @@ const Auth = () => {
          throw new Error('Passwords do not match');
       }
 
-      const response = await authAPI.register(formData);
-      
-      const { token, user } = response.data;
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      
-      window.dispatchEvent(new Event('storage'));
-
+      const { name, email, password, password_confirmation } = formData;
+      await register(name, email, password, password_confirmation);
       navigate('/dashboard');
     } catch (err) {
        console.error('Register error:', err);
