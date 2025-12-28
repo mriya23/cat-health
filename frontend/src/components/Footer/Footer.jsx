@@ -10,11 +10,10 @@ const Footer = () => {
           <div className="footer-links-grid">
             <div className="footer-links-column">
               <h4>Produk</h4>
-              <ul>
-                <li><a href="#fitur">Fitur</a></li>
-                <li><a href="#harga">Harga</a></li>
-                <li><a href="#">API</a></li>
-              </ul>
+                <ul>
+                  <li><a href="#fitur">Fitur</a></li>
+                  <li><a href="#harga">Harga</a></li>
+                </ul>
             </div>
             <div className="footer-links-column">
               <h4>Privasi</h4>

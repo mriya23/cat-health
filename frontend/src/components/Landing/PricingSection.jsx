@@ -32,11 +32,10 @@ const PricingSection = () => {
         'Detailed Analisis',
         'Riwayat unlimited',
         'Scheduled Checkup',
-        'Priority support',
-        'Consultation Feature',
-        'Export Reports',
-        'API Access'
-      ],
+          'Priority support',
+          'Consultation Feature',
+          'Export Reports'
+        ],
       buttonText: 'Upgrade to Pro',
       buttonVariant: 'primary',
       popular: true
