@@ -58,20 +58,8 @@ const Footer = () => {
           </div>
         </div>
 
+
         <div className="footer-bottom">
-          <div className="footer-logo">
-            <div className="logo-icon-small">
-              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="20" fill="#1aa393"/>
-                <path d="M12 14C12 14 14 10 16 12C18 14 16 18 16 18" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                <path d="M28 14C28 14 26 10 24 12C22 14 24 18 24 18" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                <ellipse cx="20" cy="22" rx="8" ry="7" fill="white"/>
-                <circle cx="17" cy="21" r="1.5" fill="#1aa393"/>
-                <circle cx="23" cy="21" r="1.5" fill="#1aa393"/>
-                <ellipse cx="20" cy="24" rx="1.5" ry="1" fill="#ffb6c1"/>
-              </svg>
-            </div>
-          </div>
           <p className="footer-copyright">© 2024 AI Cat Health. All rights reserved.</p>
         </div>
       </div>
