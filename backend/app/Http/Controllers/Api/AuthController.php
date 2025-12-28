@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,14 @@ class AuthController extends Controller
         ]);
 
         $token = $user->createToken('auth-token')->plainTextToken;
+
+        // Create welcome notification
+        Notification::create([
+            'user_id' => $user->id,
+            'title' => 'Selamat Datang!',
+            'message' => 'Terima kasih telah bergabung dengan CAT HEALTH. Kami siap membantu memantau kesehatan kucing Anda.',
+            'type' => 'success',
+        ]);
 
         return response()->json([
             'user' => $user,

@@ -65,4 +65,12 @@ export const subscriptionAPI = {
   cancel: () => api.delete('/subscription'),
 };
 
+// Notifications API
+export const notificationsAPI = {
+  getAll: () => api.get('/notifications'),
+  markAsRead: (id) => api.patch(`/notifications/${id}/mark-read`),
+  markAllAsRead: () => api.post('/notifications/mark-all-read'),
+  delete: (id) => api.delete(`/notifications/${id}`),
+};
+
 export default api;

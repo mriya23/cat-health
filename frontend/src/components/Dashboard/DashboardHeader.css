@@ -67,6 +67,126 @@
   background: var(--neutral-100);
 }
 
+.notification-container {
+  position: relative;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--spacing-2);
+  width: 320px;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--neutral-200);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-bottom: 1px solid var(--neutral-100);
+  background: var(--neutral-50);
+}
+
+.dropdown-header h3 {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.mark-all-btn {
+  font-size: var(--text-xs);
+  color: var(--primary-600);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mark-all-btn:hover {
+  text-decoration: underline;
+}
+
+.notification-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-bottom: 1px solid var(--neutral-50);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.notification-item:hover {
+  background: var(--neutral-50);
+}
+
+.notification-item.unread {
+  background: var(--primary-50);
+}
+
+.notification-item.unread:hover {
+  background: var(--primary-100);
+}
+
+.item-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-icon.success { background: var(--success-100); color: var(--success-600); }
+.item-icon.info { background: var(--primary-100); color: var(--primary-600); }
+.item-icon.warning { background: var(--warning-100); color: var(--warning-600); }
+.item-icon.error { background: var(--error-100); color: var(--error-600); }
+
+.item-content {
+  flex: 1;
+}
+
+.item-title {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.item-message {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.item-time {
+  display: block;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: var(--spacing-1);
+}
+
+.empty-notifications {
+  padding: var(--spacing-8) var(--spacing-4);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
 .notification-badge {
   position: absolute;
   top: 4px;

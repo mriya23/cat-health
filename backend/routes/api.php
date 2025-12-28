@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ScanController;
 use App\Http\Controllers\Api\SubscriptionController;
 use Illuminate\Support\Facades\Route;
@@ -33,4 +34,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/subscription', [SubscriptionController::class, 'show']);
     Route::post('/subscription', [SubscriptionController::class, 'store']);
     Route::delete('/subscription', [SubscriptionController::class, 'destroy']);
+
+    // Notifications
+    Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead']);
+    Route::patch('/notifications/{notification}/mark-read', [NotificationController::class, 'markAsRead']);
+    Route::delete('/notifications/{notification}', [NotificationController::class, 'destroy']);
 });
