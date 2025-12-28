@@ -2,6 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(135deg, #fffcf5 0%, #fff7ed 50%, #ffedd5 100%);
 }
 
 .landing-page main {

@@ -1,5 +1,5 @@
 .features-section {
-  background: white; /* Clean white background for section */
+  background: transparent; /* Clean transparent background to show page gradient */
   padding: var(--spacing-20) 0;
 }
 
