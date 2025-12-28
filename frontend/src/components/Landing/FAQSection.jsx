@@ -29,7 +29,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="faq-section">
+    <section id="faq" className="faq-section">
       <div className="faq-container">
         <span className="faq-label">FAQ</span>
         <h2 className="section-title">Pertanyaan yang Sering Diajukan</h2>

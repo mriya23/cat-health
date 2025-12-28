@@ -7,12 +7,12 @@ const Navbar = ({ isLoggedIn = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  const navLinks = [
-    { name: 'Beranda', href: '#beranda' },
-    { name: 'Kenapa', href: '#kenapa' },
-    { name: 'Panduan', href: '#panduan' },
-    { name: 'Kontak', href: '#kontak' },
-  ];
+    const navLinks = [
+      { name: 'Beranda', href: '#beranda' },
+      { name: 'Fitur', href: '#fitur' },
+      { name: 'Cara Kerja', href: '#how-it-works' },
+      { name: 'FAQ', href: '#faq' },
+    ];
 
   return (
     <nav className="navbar">
