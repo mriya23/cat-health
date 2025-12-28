@@ -22,6 +22,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // Auth
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']);
+    Route::post('/user/update-profile', [AuthController::class, 'updateProfile']);
+    Route::post('/user/update-password', [AuthController::class, 'updatePassword']);
+    Route::post('/user/update-notification-preferences', [AuthController::class, 'updateNotificationPreferences']);
 
     // Scans
     Route::get('/scans', [ScanController::class, 'index']);
@@ -40,4 +43,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead']);
     Route::patch('/notifications/{notification}/mark-read', [NotificationController::class, 'markAsRead']);
     Route::delete('/notifications/{notification}', [NotificationController::class, 'destroy']);
+
+    // Admin
+    Route::prefix('admin')->group(function () {
+        Route::get('/statistics', [App\Http\Controllers\Api\AdminController::class, 'statistics']);
+        Route::get('/users', [App\Http\Controllers\Api\AdminController::class, 'users']);
+        Route::get('/analytics', [App\Http\Controllers\Api\AdminController::class, 'analytics']);
+    });
 });

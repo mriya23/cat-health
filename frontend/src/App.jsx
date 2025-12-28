@@ -8,6 +8,7 @@ import ScanHistory from './pages/ScanHistory';
 import Billing from './pages/Billing';
 import AdminDashboard from './pages/AdminDashboard';
 import Auth from './pages/Auth';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/history" element={<ScanHistory />} />
           <Route path="/billing" element={<Billing />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </Router>
     </AuthProvider>

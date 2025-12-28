@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Sidebar } from '../components/Dashboard';
 import DashboardHeader from '../components/Dashboard/DashboardHeader';
 import { 
@@ -7,30 +8,66 @@ import {
   Calendar,
   ChevronDown,
   Download,
-  Eye
+  Eye,
+  Loader
 } from 'lucide-react';
+import { adminAPI } from '../services/api';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
-  const stats = [
-    { label: 'Total Users', value: '1,234', change: '+12%', icon: <Users size={24} /> },
-    { label: 'Total Scans', value: '5,678', change: '+8%', icon: <FileText size={24} /> },
-    { label: 'Revenue', value: 'Rp 45.6M', change: '+15%', icon: <TrendingUp size={24} /> },
-    { label: 'Active Subs', value: '892', change: '+5%', icon: <Calendar size={24} /> },
-  ];
+  const [stats, setStats] = useState(null);
+  const [recentUsers, setRecentUsers] = useState([]);
+  const [analytics, setAnalytics] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const recentUsers = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', plan: 'Pro', date: 'Nov 12, 2024' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', plan: 'Free', date: 'Nov 11, 2024' },
-    { id: 3, name: 'Bob Johnson', email: 'bob@example.com', plan: 'Clinic', date: 'Nov 10, 2024' },
-    { id: 4, name: 'Alice Brown', email: 'alice@example.com', plan: 'Pro', date: 'Nov 9, 2024' },
-  ];
+  useEffect(() => {
+    const fetchAdminData = async () => {
+      try {
+        setLoading(true);
+        const [statsRes, usersRes, analyticsRes] = await Promise.all([
+          adminAPI.getStats(),
+          adminAPI.getUsers(),
+          adminAPI.getAnalytics(),
+        ]);
 
-  const analytics = [
-    { name: 'User Profiles', value: '89%', description: 'Profile completion rate' },
-    { name: 'Scan Ratio', value: '4.2', description: 'Average scans per user' },
-    { name: 'Retention', value: '78%', description: 'Monthly retention rate' },
-  ];
+        setStats(statsRes.data);
+        setRecentUsers(usersRes.data);
+        setAnalytics(analyticsRes.data);
+      } catch (err) {
+        console.error('Error fetching admin data:', err);
+        setError('Failed to load admin dashboard');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAdminData();
+  }, []);
+
+  const getStatIcon = (label) => {
+    switch(label) {
+      case 'Total Users': return <Users size={24} />;
+      case 'Total Scans': return <FileText size={24} />;
+      case 'Revenue': return <TrendingUp size={24} />;
+      case 'Active Subs': return <Calendar size={24} />;
+      default: return <TrendingUp size={24} />;
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="dashboard-layout">
+        <Sidebar isAdmin={true} />
+        <div className="dashboard-main">
+          <DashboardHeader title="Admin Dashboard" subtitle="Clinic Mode - Overview" />
+          <div className="dashboard-content" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+            <Loader size={48} className="spinning" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="dashboard-layout">
@@ -38,18 +75,26 @@ const AdminDashboard = () => {
       <div className="dashboard-main">
         <DashboardHeader title="Admin Dashboard" subtitle="Clinic Mode - Overview" />
         <div className="dashboard-content">
-          <div className="admin-stats-grid">
-            {stats.map((stat, index) => (
-              <div key={index} className="admin-stat-card">
-                <div className="stat-icon-admin">{stat.icon}</div>
-                <div className="stat-content">
-                  <span className="stat-value-admin">{stat.value}</span>
-                  <span className="stat-label-admin">{stat.label}</span>
+          {error && (
+            <div className="error-banner" style={{ background: '#fee2e2', color: '#dc2626', padding: '1rem', borderRadius: '8px', marginBottom: '1rem' }}>
+              {error}
+            </div>
+          )}
+
+          {stats && (
+            <div className="admin-stats-grid">
+              {Object.values(stats).map((stat, index) => (
+                <div key={index} className="admin-stat-card">
+                  <div className="stat-icon-admin">{getStatIcon(stat.label)}</div>
+                  <div className="stat-content">
+                    <span className="stat-value-admin">{stat.value}</span>
+                    <span className="stat-label-admin">{stat.label}</span>
+                  </div>
+                  <span className="stat-change positive">{stat.change}</span>
                 </div>
-                <span className="stat-change positive">{stat.change}</span>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           <div className="admin-grid">
             <div className="admin-card analytics-card">
@@ -103,13 +148,15 @@ const AdminDashboard = () => {
                 {recentUsers.map((user) => (
                   <div key={user.id} className="table-row">
                     <div className="user-cell">
-                      <div className="user-avatar-admin">{user.name.charAt(0)}</div>
+                      <div className="user-avatar-admin">{user.name.charAt(0).toUpperCase()}</div>
                       <div className="user-info-admin">
                         <span className="user-name-admin">{user.name}</span>
                         <span className="user-email">{user.email}</span>
                       </div>
                     </div>
-                    <span className={`plan-badge-admin ${user.plan.toLowerCase()}`}>{user.plan}</span>
+                    <span className={`plan-badge-admin ${user.plan?.toLowerCase() || 'free'}`}>
+                      {user.plan || 'Free'}
+                    </span>
                     <span className="date-cell">{user.date}</span>
                     <div className="actions-cell">
                       <button className="action-btn"><Eye size={14} /></button>

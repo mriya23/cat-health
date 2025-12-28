@@ -1,4 +1,4 @@
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   Upload, 
   History, 
@@ -7,10 +7,18 @@ import {
   LogOut,
   Home
 } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 import './Sidebar.css';
 
 const Sidebar = ({ isAdmin = false }) => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+  
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   const menuItems = [
     { icon: <Home size={20} />, label: 'Dashboard', path: '/dashboard' },
@@ -63,10 +71,10 @@ const Sidebar = ({ isAdmin = false }) => {
       </nav>
 
       <div className="sidebar-footer">
-        <Link to="/login" className="sidebar-link logout-link">
+        <button className="sidebar-link logout-link" onClick={handleLogout}>
           <LogOut size={20} />
           <span>Logout</span>
-        </Link>
+        </button>
       </div>
     </aside>
   );
